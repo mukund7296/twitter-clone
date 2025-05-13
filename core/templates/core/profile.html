@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img src="{{ user.avatar }}"
+             class="rounded-circle mb-3"
+             width="200"
+             alt="{{ user.username }} avatar">
+        <h2>{{ user.username }}</h2>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h3>Professional Information</h3>
+                <p class="mb-1"><strong>Occupation:</strong> {{ profile.occupation|default:"Not specified" }}</p>
+                <p class="mb-1"><strong>Company:</strong> {{ profile.company|default:"Not specified" }}</p>
+
+                <h3 class="mt-4">Location</h3>
+                <p class="mb-1"><strong>Address:</strong> {{ profile.address|default:"Not specified" }}</p>
+                <p class="mb-1"><strong>City:</strong> {{ profile.city|default:"Not specified" }}</p>
+                <p class="mb-1"><strong>Country:</strong> {{ profile.country|default:"Not specified" }}</p>
+
+                <h3 class="mt-4">Bio</h3>
+                <p>{{ profile.bio|default:"No bio yet" }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}  <!-- Add this line -->
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Home Feed</h2>
+        
+        <!-- Post Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary mt-2" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Posts List -->
+        {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="{{ post.user.avatar }}" 
+                         class="rounded-circle me-2" 
+                         width="40" 
+                         alt="{{ post.user.username }} avatar">
+                    <h5 class="card-title mb-0">{{ post.user.username }}</h5>
+                </div>
+                <p class="card-text">{{ post.content }}</p>
+                <small class="text-muted">{{ post.created_at|timesince }} ago</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
