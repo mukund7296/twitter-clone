@@ -39,12 +39,27 @@ cd twitter_clone
 ```bash
 python manage.py startapp core
 ````
+<img width="749" alt="image" src="https://github.com/user-attachments/assets/f1729948-9e72-4fb6-b385-e1cd0b462492" />
 
-### 2. Create a Virtual Environment
+
+### 2. Configure Settings
+Add to twitter_clone/settings.py:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+INSTALLED_APPS = [
+    ...
+    'core.apps.CoreConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
+]
+
+AUTH_USER_MODEL = 'core.User'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 ```
 
 ### 3. Install Dependencies
