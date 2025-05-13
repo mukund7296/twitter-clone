@@ -2,7 +2,8 @@
 
 A simplified social media application with user profiles and post functionality.
 
-![Screenshot](screenshot.png) <!-- Add actual screenshot later -->
+<img width="1433" alt="image" src="https://github.com/user-attachments/assets/c3bb8d23-fbe3-4350-88a5-5e67e7eaf8ff" />
+
 
 ## Features
 
@@ -53,6 +54,16 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
 ]
 
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Add this line
+STATICFILES_DIRS = [BASE_DIR / 'static']  # Create 'static' directory if needed
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 AUTH_USER_MODEL = 'core.User'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -63,29 +74,43 @@ LOGIN_URL = 'login'
 ```
 
 ### 3. Install Dependencies
-
+add to requirements.txt
+```bash
+asgiref==3.8.1
+crispy-bootstrap5==2025.4
+Django==5.2.1
+django-crispy-forms==2.4
+pillow==11.2.1
+sqlparse==0.5.3
+```
+To install all module in virtual environment area follow below command 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
-
-Create a `.env` file in the project root:
+### 4. update all files from repository to your System fresh files(copy - Paste) 
 
 ```bash
-SECRET_KEY=your-secret-key-here
-DEBUG=True
+update twitter-clone/urls.py (copy - Paste) 
+update core/forms.py (Manually create forms.py file) & (copy - Paste) ) - for registration
+update core/urls.py (Manually create urls.py file) & (copy - Paste) )
+update core/admin.py  (copy - Paste) - to display all modules at Admin Panel UI/UX (to See all models this step required)
+update core/views.py  (copy - Paste)- Here is the main logic
+update core/admin.py  (copy - Paste)
+update core/models.py  (copy - Paste) - Here are the all Models or Database tables
+update core/admin.py  (copy - Paste)
+
+# Create HTML templates folder 
+Create core/templates/core/base.html - (create manually file & copy - Paste content)
+Create other templates (home.html, profile.html, register.html, login.html, logout.html) following similar structure and (copy paste ).
 ```
 
-You can generate a secret key using:
+<img width="309" alt="image" src="https://github.com/user-attachments/assets/03786ddc-cff8-4214-b9f4-6e49d87430a2" />
+
+### 5. Run Migrations
 
 ```bash
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-
-### 5. Apply Migrations
-
-```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
@@ -94,49 +119,51 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+This user : admin  & password :******(Need to set here)
 
 ### 7. Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
+<img width="1031" alt="image" src="https://github.com/user-attachments/assets/cd757af3-01ac-4326-9009-6551a4024c97" />
 
-Open your browser and visit: [http://localhost:8000](http://localhost:8000)
+### Open your browser and visit: [http://127.0.0.1:8081/](http://127.0.0.1:8081/)
+
+## Main Page 
+
+<img width="1431" alt="image" src="https://github.com/user-attachments/assets/54c03004-cad8-47de-9326-66b862f3a3a5" />
+
+## Registration Page 
+http://127.0.0.1:8081/register/
+<img width="1422" alt="image" src="https://github.com/user-attachments/assets/0bb9e484-efd8-486c-881f-4cc1090ec5fe" />
+
+## Login Page 
+http://127.0.0.1:8081/login/
+<img width="1428" alt="image" src="https://github.com/user-attachments/assets/3fd98ab8-3c12-41f8-82a6-b04b9a2baae4" />
+
+## Profile page 
+
+http://127.0.0.1:8081/profile/
+<img width="1429" alt="image" src="https://github.com/user-attachments/assets/56522dc0-c3cc-4a1f-8a01-8613e7de96f6" />
+
+
+## Main posts Page
+<img width="1433" alt="image" src="https://github.com/user-attachments/assets/b26d9d55-96af-4f92-84d1-652d3170cd71" />
+
+##  Admin Access
+
+Visit: [http://127.0.0.1:8081/admin](http://127.0.0.1:8081/admin)
+
+
+<img width="1238" alt="image" src="https://github.com/user-attachments/assets/8cab98af-5298-48b5-8309-374371ea9660" />
+
+## Here Admin can see all Modules User , Pofiles and Posts. 
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/6060b452-1b00-468c-af3a-9e12228dcb70" />
+
+## All posts and filter to filter posts based on user 
+<img width="1435" alt="image" src="https://github.com/user-attachments/assets/fa67939a-0af3-482c-9cfb-f093915714a7" />
 
 ---
 
-## 🔐 Test Credentials
-
-| Username   | Password      |
-| ---------- | ------------- |
-| `testuser` | `testpass123` |
-
----
-
-## 📁 Project Structure
-
-```
-twitter-clone/
-├── core/                 # Main Django app
-│   ├── migrations/       # DB migrations
-│   ├── templates/        # HTML templates
-│   ├── admin.py          # Admin configuration
-│   ├── models.py         # Database models
-│   └── views.py          # App logic
-├── twitter_clone/        # Project settings
-│   ├── settings.py       # Settings and configs
-│   └── urls.py           # URL routing
-├── .env                  # Environment variables
-├── requirements.txt      # Python dependencies
-└── manage.py             # Django CLI
-```
-
----
-
-## 🔑 Admin Access
-
-Visit: [http://localhost:8000/admin](http://localhost:8000/admin)
-
-Use the superuser credentials created in Step 6.
-
----
+## Thank you
